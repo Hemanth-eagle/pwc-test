@@ -1,5 +1,6 @@
 import { Country } from "@/_api/useCountries";
 import Image from "next/image";
+import Link from "next/link";
 
 export function CountryCard({
   country,
@@ -9,6 +10,7 @@ export function CountryCard({
   index: number;
 }) {
   return (
+    <Link href={`/countries/${country.cca3}`}>
     <div
       key={index}
       className="bg-white dark:bg-gray-600 shadow-md rounded-lg overflow-hidden"
@@ -37,5 +39,6 @@ export function CountryCard({
         </p>
       </div>
     </div>
+    </Link>
   );
 }
