@@ -21,18 +21,14 @@ describe('Countries Page Integration Test', () => {
   it('should render the Countries page with country data', async () => {
     render(<Countries />);
 
-    // Check for presence of country cards
     expect(screen.getByText('CountryA')).toBeInTheDocument();
     expect(screen.getByText('CountryB')).toBeInTheDocument();
     
-    // Check that the sorting and filtering controls are present
     expect(screen.getByTitle('sort')).toBeInTheDocument();
     expect(screen.getByTitle('filter')).toBeInTheDocument();
 
-    // Simulate sorting and verify results
     fireEvent.change(screen.getByTitle('sort'), { target: { value: 'asc' } });
     await waitFor(() => {
-      // Verify that sorting has taken place
       expect(screen.getByText('CountryA')).toBeInTheDocument();
     });
   });
